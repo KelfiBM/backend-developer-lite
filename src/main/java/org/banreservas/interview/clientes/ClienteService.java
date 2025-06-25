@@ -7,6 +7,7 @@ import jakarta.ws.rs.BadRequestException;
 import jakarta.ws.rs.NotFoundException;
 import org.banreservas.interview.clientes.dtos.*;
 import org.banreservas.interview.clientes.filters.ClienteFilter;
+import org.banreservas.interview.paises.Pais;
 import org.banreservas.interview.paises.PaisService;
 
 import java.util.List;
@@ -40,7 +41,7 @@ public class ClienteService {
         return clienteRepository.count();
     }
 
-    public Cliente createCliente(CreateClienteDto createClienteDto) {
+    public Cliente createCliente(CreateClienteDto createClienteDto) throws BadRequestException {
         var pais = paisService.getPaisByCCN3(createClienteDto.pais);
         if (pais == null) {
             throw new BadRequestException("Pais no encontrado");
@@ -58,15 +59,24 @@ public class ClienteService {
         return cliente;
     }
 
-    public Cliente updateCliente(Long id, UpdateClienteDto updateClienteDto) {
+    public Cliente updateCliente(Long id, UpdateClienteDto updateClienteDto) throws NotFoundException, BadRequestException {
         var cliente = clienteRepository.findById(id);
         if (cliente == null) {
             throw new NotFoundException("Cliente no encontrado");
         }
+
+        Pais pais = null;
+        if (updateClienteDto.pais != null) {
+            pais = paisService.getPaisByCCN3(updateClienteDto.pais);
+            if (pais == null) {
+                throw new BadRequestException("Pais no encontrado");
+            }
+        }
+
         cliente.telefono = updateClienteDto.telefono == null ? cliente.telefono : updateClienteDto.telefono;
         cliente.direccion = updateClienteDto.direccion == null ? cliente.direccion : updateClienteDto.direccion;
         cliente.correo = updateClienteDto.correo == null ? cliente.correo : updateClienteDto.correo;
-        cliente.pais = updateClienteDto.pais == null ? cliente.pais : paisService.getPaisByCCN3(updateClienteDto.pais);
+        cliente.pais = pais == null ? cliente.pais : pais;
         return cliente;
     }
 
