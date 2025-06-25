@@ -3,12 +3,14 @@ package org.banreservas.interview.clientes.dtos;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
-import org.banreservas.interview.clientes.validation.PaisMustExists;
+import org.banreservas.interview.clientes.validation.CorreoNotBeingUsed;
+import org.banreservas.interview.clientes.validation.PaisExists;
 
 public class UpdateClienteDto {
 
     @Size(max = 50, message = "Maximo 50 caracteres")
     @Email(message = "Formato de correo invalido")
+    @CorreoNotBeingUsed
     public String correo;
 
     @Size(max = 200, message = "Maximo 200 caracteres")
@@ -19,6 +21,6 @@ public class UpdateClienteDto {
     public String telefono;
 
     @Size(min = 3, max = 3, message = "Debe cumplir con el codigo ISO 3166 de 3 digitos")
-    @PaisMustExists
+    @PaisExists
     public String pais;
 }

@@ -19,7 +19,7 @@ public class Cliente extends PanacheEntity {
     @Column(length = 50)
     public String segundoApellido;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = false, unique = true)
     public String correo;
 
     @Column(length = 200, nullable = false)
@@ -27,7 +27,7 @@ public class Cliente extends PanacheEntity {
 
     @Column(length = 15, nullable = false)
     public String telefono;
-    
+
     @ManyToOne(optional = false)
     public Pais pais;
 }

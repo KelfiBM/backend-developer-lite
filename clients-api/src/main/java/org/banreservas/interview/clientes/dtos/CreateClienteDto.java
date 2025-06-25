@@ -4,7 +4,8 @@ import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import org.banreservas.interview.clientes.validation.PaisMustExists;
+import org.banreservas.interview.clientes.validation.CorreoNotBeingUsed;
+import org.banreservas.interview.clientes.validation.PaisExists;
 
 public class CreateClienteDto {
 
@@ -25,6 +26,7 @@ public class CreateClienteDto {
     @NotBlank(message = "Debe proveer un correo")
     @Size(max = 50, message = "Maximo 50 caracteres")
     @Email(message = "Formato de correo invalido")
+    @CorreoNotBeingUsed
     public String correo;
 
     @NotBlank(message = "Debe proveer una direccion")
@@ -38,6 +40,6 @@ public class CreateClienteDto {
 
     @NotBlank(message = "Debe proveer un pais")
     @Size(min = 3, max = 3, message = "Debe cumplir con el formato de codigo ISO 3166 de 3 digitos")
-    @PaisMustExists
+    @PaisExists
     public String pais;
 }

@@ -24,6 +24,14 @@ public class ClienteService {
         return clienteRepository.findById(id);
     }
 
+    public Cliente findByCorreo(String correo) {
+        var clientes = clienteRepository.list("correo", correo);
+        if (clientes.isEmpty()) {
+            return null;
+        }
+        return clientes.getFirst();
+    }
+
     public List<Cliente> findAll() {
         return clienteRepository.listAll().stream().toList();
     }
