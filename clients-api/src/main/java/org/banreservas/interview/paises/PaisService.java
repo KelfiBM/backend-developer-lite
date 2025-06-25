@@ -51,7 +51,7 @@ public class PaisService {
     public Pais getPaisByCCN3(String ccn3) throws NotFoundException {
         var paises = paisRepository.list("codeCCA3", ccn3);
         if (paises.isEmpty()) {
-            throw new NotFoundException("Pais no encontrado");
+            return null;
         }
         return paises.getFirst();
     }

@@ -3,6 +3,7 @@ package org.banreservas.interview.clientes;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import org.banreservas.interview.clientes.dtos.CreateClienteDto;
 import org.banreservas.interview.clientes.dtos.UpdateClienteDto;
@@ -44,7 +45,7 @@ public class ClienteResource {
     @POST
     @Consumes("application/json")
     @Produces("application/json")
-    public Cliente add(CreateClienteDto createClienteDto) {
+    public Cliente add(@Valid CreateClienteDto createClienteDto) {
         return clienteService.createCliente(createClienteDto);
     }
 
@@ -53,7 +54,7 @@ public class ClienteResource {
     @Path("{id}")
     @Consumes("application/json")
     @Produces("application/json")
-    public Cliente update(@PathParam("id") Long id, UpdateClienteDto updateClienteDto) {
+    public Cliente update(@PathParam("id") Long id, @Valid UpdateClienteDto updateClienteDto) {
         if (id == 0) {
             throw new BadRequestException("ID invalido");
         }

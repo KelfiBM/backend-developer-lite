@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.banreservas.interview</groupId>
-    <artifactId>backend-developer-lite</artifactId>
+    <artifactId>clients-api</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -84,6 +84,10 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-openapi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-validator</artifactId>
         </dependency>
     </dependencies>
 

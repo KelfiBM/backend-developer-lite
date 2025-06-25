@@ -33,8 +33,12 @@ public class ClienteService {
     }
 
     public Cliente createCliente(CreateClienteDto createClienteDto) {
+        var pais = paisService.getPaisByCCN3(createClienteDto.pais);
+        if (pais == null) {
+            throw new BadRequestException("Pais no encontrado");
+        }
         Cliente cliente = new Cliente();
-        cliente.pais = paisService.getPaisByCCN3(createClienteDto.pais);
+        cliente.pais = pais;
         cliente.correo = createClienteDto.correo;
         cliente.direccion = createClienteDto.direccion;
         cliente.telefono = createClienteDto.telefono;
@@ -51,10 +55,10 @@ public class ClienteService {
         if (cliente == null) {
             throw new NotFoundException("Cliente no encontrado");
         }
-        cliente.telefono = updateClienteDto.telefono;
-        cliente.direccion = updateClienteDto.direccion;
-        cliente.correo = updateClienteDto.correo;
-        cliente.pais = paisService.getPaisByCCN3(updateClienteDto.pais);
+        cliente.telefono = updateClienteDto.telefono == null ? cliente.telefono : updateClienteDto.telefono;
+        cliente.direccion = updateClienteDto.direccion == null ? cliente.direccion : updateClienteDto.direccion;
+        cliente.correo = updateClienteDto.correo == null ? cliente.correo : updateClienteDto.correo;
+        cliente.pais = updateClienteDto.pais == null ? cliente.pais : paisService.getPaisByCCN3(updateClienteDto.pais);
         return cliente;
     }
 
