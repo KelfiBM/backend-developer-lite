@@ -28,9 +28,15 @@ eficiencia y la calidad de la gestión de la información del cliente.
 - **Event Bus:** Kafka
 - **Containers:** Docker
 
-## Arquitectura de Aplicacion
+## Diagramas de Arquitectura
+
+### Arquitectura de Aplicaciones
 
 ![Arquitectura de Aplicacion](https://github.com/KelfiBM/backend-developer-lite/blob/master/supporting-documents/diagrama-de-arquitectura-dark.svg?raw=true)
+
+### Arquitectura de Componentes de Clientes Api
+
+![Arquitectura de Componentes de Clientes Api](https://github.com/KelfiBM/backend-developer-lite/blob/master/supporting-documents/diagrama-de-componentes-dark.svg?raw=true)
 
 ## Dependencias
 
