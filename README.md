@@ -84,6 +84,8 @@ GET /api/clientes
 **Response**: 200 OK  
 Retorna una lista de todos los clientes.
 
+---
+
 ### Obtener Cliente por ID
 
 ```http
@@ -92,6 +94,8 @@ GET /api/clientes/{id}
 
 **Response**: 200 OK  
 Retorna la informacion de cliente para el ID especificado
+
+---
 
 ### Agregar Cliente
 
@@ -123,6 +127,8 @@ Content-Type: application/json
 - `pais`: Debe ser un codigo de 3 letras como indica ISO 3166.
 - `telefono`: Debe ser numerico y de maximo 15 digitos
 
+---
+
 ### Actualizar Cliente
 
 ```http
@@ -148,6 +154,8 @@ Content-Type: application/json
 - Todos los campos son opcionales
 - `pais`: Debe ser un codigo de 3 letras como indica ISO 3166.
 - `telefono`: Debe ser numerico y de maximo 15 digitos
+
+---
 
 ### Eliminar Cliente
 
