@@ -54,7 +54,7 @@ Clonar el proyecto
 Ir al directorio del proyecto
 
 ```bash
-  cd my-project
+  cd backend-developer-lite
 ```
 
 Iniciar la app
