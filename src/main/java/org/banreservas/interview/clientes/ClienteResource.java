@@ -11,7 +11,7 @@ import org.banreservas.interview.clientes.dtos.UpdateClienteDto;
 import java.util.List;
 
 @ApplicationScoped
-@Path("/cliente")
+@Path("/clientes")
 public class ClienteResource {
 
     @Inject
